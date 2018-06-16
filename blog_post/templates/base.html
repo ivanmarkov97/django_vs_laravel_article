@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlogPost</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+			    <ul class="nav navbar-nav">
+		        	<li><a href="http://127.0.0.1:8000">All posts</a></li>
+		        	<li><a href="http://127.0.0.1:8000/posts/create">Create post</a></li>
+		        	<form class="navbar-form navbar-left">
+				        <div class="form-group">
+				          <input type="text" class="form-control" placeholder="Search">
+				        </div>
+				        <button type="submit" class="btn btn-default">Submit</button>
+				    </form>
+		      	</ul>
+		    </div>
+		    {% if username %}
+		    	<p class="navbar-text navbar-right" style="margin-right: 10px">Signed in as <a href="#" class="navbar-link">{{username}}</a><a href="http://127.0.0.1:8000/auth/logout" style="margin-left: 10px">Log out</a></p>
+		    {% else %}
+		    	<p class="navbar-text navbar-right" style="margin-right: 10px"><a href="http://127.0.0.1:8000/auth/login" style="margin-left: 10px">Log in</a></p>
+		    {% endif %}
+		  </div>
+		</nav>
+
+		<div class="container-fluid">
+			{% block index %}{% endblock %}
+			{% block login %}{% endblock %}
+			{% block create_block %}{% endblock %}
+			{% block post %}{% endblock %}
+		</div>
+	</div>
+</body>
+</html>
